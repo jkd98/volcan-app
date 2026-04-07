@@ -19,3 +19,8 @@ sudo -u postgres psql
 ```
 npx sequelize-cli init
 ```
+
+### Acceder a postgres
+```
+sudo -u postgres psql
+```
