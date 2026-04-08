@@ -6,14 +6,14 @@ const options: swaggerJSDoc.Options = {
         openapi: '3.0.2',
         tags: [
             {
-                name: 'Products',
-                description: 'API operations related to products'
+                name: 'Presentation',
+                description: 'API operations related to presentations'
             }
         ],
         info: {
             title: 'Rest API Node.js / Express / Typescript',
             version: "1.0.0",
-            description: "API Docs for products"
+            description: "API Docs for Volcán WebApp"
         }
     },
     apis:['./src/routes.ts']
