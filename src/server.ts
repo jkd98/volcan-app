@@ -1,4 +1,8 @@
 import express from 'express';
+
+import dotenv from 'dotenv';
+dotenv.config()
+
 import swaggerUi, { serve } from 'swagger-ui-express';
 import swaggerSpec, { swaggerUiOptions } from './config/swagger';
 import cors, { CorsOptions } from 'cors';
@@ -13,7 +17,7 @@ export async function connectDB() {
     try {
         await db.authenticate()
         await db.sync() // para poder agregar nuevas columnas
-        //console.log("Conexión exitosa a DB"); //--Se comenta para evitar warnings en las pruebas
+        console.log("Conexión exitosa a DB"); //--Se comenta para evitar warnings en las pruebas
     } catch (error) {
         console.log(error);
         console.log("error al conectarse a DB")

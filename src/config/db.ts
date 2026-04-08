@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
 import pg from 'pg';
+
 
 // Validación de seguridad: Si falta una variable crítica, la app no debe arrancar
 const { DATABASE, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
@@ -8,9 +8,6 @@ const { DATABASE, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
 if (!DATABASE || !DB_USER || !DB_PASSWORD || !DB_HOST) {
     throw new Error("Faltan variables de entorno para la conexión a la base de datos.");
 }
-
-
-dotenv.config()
 
 const db = new Sequelize(
     DATABASE,
@@ -42,7 +39,8 @@ const db = new Sequelize(
             acquire: 30000,   // 30s timeout, para obtener una conexión del pool
             idle: 10000       // cierra conexiones inactivas después de 10s
         }
-    })
+    }
+);
 
 
 export default db;
