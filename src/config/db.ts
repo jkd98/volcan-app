@@ -1,5 +1,7 @@
 import { Sequelize } from 'sequelize';
 import pg from 'pg';
+import dotenv from 'dotenv';
+dotenv.config(); // Debe ser lo primero
 
 class Database {
     public db: Sequelize;

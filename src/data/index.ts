@@ -1,11 +1,11 @@
 // Codigo para limpiar la DB, cada que finalicen las pruebas
 
 import {exit} from 'node:process';
-import db from '../config/db';
+import Database from '../config/db.js';
 
 const clearDB = async () => {
     try {
-        await db.sync({force:true})
+        await Database.db.sync({force:true})
         console.log("Datos eliminados correctamente")
         exit(0);
     } catch (error) {

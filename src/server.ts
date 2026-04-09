@@ -2,8 +2,8 @@ import express from 'express';
 import cors, { CorsOptions } from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpec, { swaggerUiOptions } from './config/swagger';
-import router from './routes';
+import swaggerSpec, { swaggerUiOptions } from './config/swagger.js';
+import router from './routes.js';
 
 const server = express();
 

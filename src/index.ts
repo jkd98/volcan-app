@@ -1,8 +1,6 @@
-import dotenv from 'dotenv';
-dotenv.config(); // Debe ser lo primero
 
-import server from "./server";
-import Database from "./config/db";
+import server from "./server.js";
+import Database from "./config/db.js";
 
 const PORT = process.env.PORT || 3000;
 
