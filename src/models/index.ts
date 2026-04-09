@@ -1,10 +1,8 @@
-import db from "../config/db";
-import { Presentation } from "./Presentation.model";
-import { Flavor } from "./Flavor.model";
+import { Presentation } from "./Presentation.model.js";
+import { Flavor } from "./Flavor.model.js";
 
 
 export {
-    db,
     Presentation,
     Flavor
 };

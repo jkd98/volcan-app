@@ -1,6 +1,7 @@
 {
   "name": "api-rest-volcan-app",
   "version": "1.0.0",
+  "type": "module",
   "description": "REST API's con Express y Typescript",
   "main": "index.js",
   "scripts": {

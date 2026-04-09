@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional, CreationOptional } from "sequelize";
-import db from "../config/db";
+import Database from "../config/db.js";
 
 const categories = ['Especialidad', 'Sencillo'];
 
@@ -61,6 +61,6 @@ Presentation.init(
     },
     {
         tableName: 'presentations',
-        sequelize: db
+        sequelize: Database.db
     }
 );

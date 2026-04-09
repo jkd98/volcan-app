@@ -48,8 +48,13 @@ class Database {
     async connect() {
         try {
             await this.db.authenticate();
-            // Aquí es donde importarías tus modelos para que sync los vea
-            // import '../models/Presentation.model';
+            // Importar modelos para que sync los vea
+            /**
+             * Se agrega la extension .js aunque el archivo sea .ts al final del path. 
+             * TypeScript es lo suficientemente inteligente para entender 
+             * que en tiempo de ejecución ese archivo será JavaScript.
+             */
+            await  import('../models/index.js');
 
             await this.db.sync({ alter: true });
             console.log("Conexión exitosa a DB y tablas sincronizadas");

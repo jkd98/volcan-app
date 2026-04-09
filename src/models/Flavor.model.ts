@@ -1,5 +1,5 @@
 import { CreationOptional, DataTypes, InferAttributes, InferCreationAttributes, Model, Optional } from "sequelize";
-import db from "../config/db";
+import Database from "../config/db.js";
 
 type FlavorAttributes = {
     flavor_id: number;
@@ -44,6 +44,6 @@ Flavor.init(
     },
     {
         tableName: 'flavors',
-        sequelize: db
+        sequelize: Database.db
     }
 )
