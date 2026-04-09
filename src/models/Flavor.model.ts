@@ -3,6 +3,7 @@ import Database from "../config/db.js";
 
 type FlavorAttributes = {
     flavor_id: number;
+    uuid:string;
     name: string;
     image:string|null;
     category: 'Especialidad' | 'Sencillo';
@@ -13,6 +14,7 @@ type FlavorCreationAttributes = Optional<FlavorAttributes,'flavor_id'>;
 
 export class Flavor extends Model< FlavorAttributes, FlavorCreationAttributes > {
     declare flavor_id: CreationOptional<number>;
+    declare uuid:string;
     declare name: string;
     declare image:string|null;
     declare category: 'Especialidad' | 'Sencillo';
@@ -28,6 +30,13 @@ Flavor.init(
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
+        },
+        // UUID para la API y URLs
+        uuid: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4, // Se genera solo al crear
+            unique: true,
+            allowNull: false
         },
         name: {
             type: DataTypes.STRING,
