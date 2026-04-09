@@ -4,6 +4,7 @@ import Database from "../config/db.js";
 type FlavorAttributes = {
     flavor_id: number;
     uuid:string;
+    user_id:number;
     name: string;
     image:string|null;
     category: 'Especialidad' | 'Sencillo';
@@ -15,6 +16,7 @@ type FlavorCreationAttributes = Optional<FlavorAttributes,'flavor_id'>;
 export class Flavor extends Model< FlavorAttributes, FlavorCreationAttributes > {
     declare flavor_id: CreationOptional<number>;
     declare uuid:string;
+    declare user_id:number;
     declare name: string;
     declare image:string|null;
     declare category: 'Especialidad' | 'Sencillo';
@@ -37,6 +39,15 @@ Flavor.init(
             defaultValue: DataTypes.UUIDV4, // Se genera solo al crear
             unique: true,
             allowNull: false
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            // Se conectará con la tabla Users
+            references: {
+                model: 'users',
+                key: 'user_id'
+            }
         },
         name: {
             type: DataTypes.STRING,

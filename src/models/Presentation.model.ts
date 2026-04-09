@@ -8,6 +8,7 @@ const categories = ['Especialidad', 'Sencillo'];
 type PresentationAttributes = {
     presentation_id: number;
     uuid:string;
+    user_id: number; // <--- El dueño del registro
     name: string;
     descrip: string | null;
     image: string | null;
@@ -23,6 +24,7 @@ export class Presentation extends Model<PresentationAttributes, PresentationCrea
     //  CreationOptional para campos autogenerados
     declare presentation_id: CreationOptional<number>;
     declare uuid: CreationOptional<string>;
+    declare user_id: number;
     declare name: string;
     declare descrip: string | null;
     declare price: number;
@@ -46,6 +48,15 @@ Presentation.init(
             defaultValue: DataTypes.UUIDV4, // Se genera solo al crear
             unique: true,
             allowNull: false
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            // Se conectará con la tabla Users
+            references: {
+                model: 'users',
+                key: 'user_id'
+            }
         },
         name: {
             type: DataTypes.STRING,
