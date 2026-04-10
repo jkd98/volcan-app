@@ -3,7 +3,7 @@ import cors, { CorsOptions } from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec, { swaggerUiOptions } from './config/swagger.js';
-import router from './routes.js';
+import rootRouter from './routes/index.js';
 
 const server = express();
 
@@ -21,7 +21,7 @@ server.use(cors(corsOptions));
 server.use(express.json());
 server.use(morgan('dev'));
 
-server.use('/api/presentation', router);
+server.use('/api', rootRouter);
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions));
 
 export default server;
