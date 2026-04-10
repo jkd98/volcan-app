@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import { ApiResponse } from "../types/api_response.js";
 import { AppError } from "../errors/AppError.js";
 
-const createUser = async (req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response) => {
     try {
         const result = await UserService.createUser(req.body);
         const response: ApiResponse<User> = {
