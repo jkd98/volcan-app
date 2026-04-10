@@ -1,7 +1,7 @@
 import { CreationOptional, DataTypes, Model, Optional } from "sequelize";
 import Database from "../config/db.js";
 
-type UserAttributes = {
+export type UserAttributes = {
     user_id: number;
     uuid: string;
     name: string;
@@ -10,7 +10,10 @@ type UserAttributes = {
     image: string | null;
 }
 
-type UserCreationAttributes = Optional<UserAttributes, 'user_id' | 'uuid'>;
+export type UserCreationAttributes = Optional<UserAttributes, 'user_id' | 'uuid'>;
+
+// Esto permite que todos los campos sean opcionales, pero excluye los que NO deben tocarse
+export type UserUpdateAttributes = Partial<Omit<UserAttributes, 'user_id' | 'uuid'>>;
 
 
 export class User extends Model<UserAttributes, UserCreationAttributes> {
