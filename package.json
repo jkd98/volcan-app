@@ -8,6 +8,7 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --coverage ",
     "test:coverage": "npm run pretest && jest --detectOpenHandles --coverage",
     "dev": "nodemon --exec tsx src/index.ts",
+    "iroles": "tsx ./src/scripts/insert_roles.ts",
     "build": "tsc"
   },
   "author": "JK",

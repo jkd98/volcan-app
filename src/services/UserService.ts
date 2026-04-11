@@ -28,6 +28,8 @@ export class UserService {
         const defaultImage = 'default/user-avatar.png';
         nwUser.image = image ? image : defaultImage;
 
+        await nwUser.save();
+
         return nwUser;
 
     }
