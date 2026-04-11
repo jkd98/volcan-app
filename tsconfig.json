@@ -13,12 +13,12 @@
         "emitDecoratorMetadata": true,
         "target": "esnext",
         "moduleResolution": "nodenext",
-        "module": "nodenext"
+        "module": "nodenext",
+        "types": ["jest", "node"],
+        "isolatedModules": true,
     },
     "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
+        "src/**/*.ts",
         "src/**/*.test.ts"
     ]
 }
