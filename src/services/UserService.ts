@@ -5,7 +5,7 @@ import { DuplicateError } from "../errors/SpecificErrors.js";
 
 export class UserService {
     static async createUser(data: UserCreationAttributes) {
-        const { email, pass } = data;
+        const { email, pass, image } = data;
         const userExistst = await User.findOne({
             where: {
                 email: {
@@ -24,6 +24,9 @@ export class UserService {
 
         let nwUser = new User(data);
         nwUser.pass = hashedPass;
+
+        const defaultImage = 'default/user-avatar.png';
+        nwUser.image = image ? image : defaultImage;
 
         return nwUser;
 

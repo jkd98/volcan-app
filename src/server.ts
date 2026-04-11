@@ -23,5 +23,6 @@ server.use(morgan('dev'));
 
 server.use('/api', rootRouter);
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions));
+server.use('/static', express.static('public'));
 
 export default server;

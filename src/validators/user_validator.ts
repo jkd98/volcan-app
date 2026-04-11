@@ -18,6 +18,7 @@ export const create_user_validator = [
         .normalizeEmail(), // Convierte a minúsculas y quita puntos extra en Gmail. Para Gmail, juan.perez@gmail.com y juanperez@gmail.com
     body('pass')
         .notEmpty().withMessage('La contarseña es obligatoria.')
+        .bail()
         .isLength({ min: 8 }).withMessage('La contraseña debe tener al menos 8 caracteres')
         .isStrongPassword({
             minLength: 8,
