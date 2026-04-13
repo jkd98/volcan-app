@@ -35,4 +35,9 @@ export const create_user_validator = [
         if (!esValida) throw new Error('Formato de imagen no permitido (solo JPG, PNG).');
         return true;
     }),
+    body('role_uuid')
+        .trim()
+        .notEmpty().withMessage('El rol es obligatorio')
+        .bail()
+        .isUUID().withMessage('Debe ser un rol válido')
 ]

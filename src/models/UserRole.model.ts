@@ -7,7 +7,7 @@ export type UserRoleAttributes = {
     id: number;
     uuid: string;
     user_id: UserAttributes['user_id'];
-    role_id: RoleAttributes['role_id']
+    role_id: RoleAttributes['role_id'];
 }
 
 export type UserRoleCreationAttributes = Optional<UserRoleAttributes, 'id' | 'user_id'>;

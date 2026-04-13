@@ -6,8 +6,11 @@ import { QueryTypes } from 'sequelize';
 describe('POST /api/users', () => {
 
     // Limpieza: Evita que los correos se dupliquen entre pruebas
+    beforeAll(async ()=>{
+        await Database.db.query('DELETE FROM users WHERE email = ?', { replacements: ['test@email.com'], type: QueryTypes.DELETE });
+    });
     afterAll(async () => {
-        await Database.db.query('DELETE FROM users WHERE email = ?', { replacements: ['test@aguida.com'], type: QueryTypes.DELETE });
+        await Database.db.query('DELETE FROM users WHERE email = ?', { replacements: ['test@email.com'], type: QueryTypes.DELETE });
         await Database.db.close();
     });
 
@@ -18,6 +21,7 @@ describe('POST /api/users', () => {
                 name: "Test User",
                 email: "test@email.com",
                 pass: "Password123!",
+                role_uuid: "a93aa33b-3473-4d21-945c-587cb1037d23"
             });
 
         expect(response.status).toBe(201);
