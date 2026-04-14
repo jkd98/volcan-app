@@ -1,7 +1,7 @@
 import express from "express";
 import {
     createUser
-} from "../controllers/UserController.js"
+} from "../controllers/User.Controller.js"
 import { create_user_validator } from "../validators/user_validator.js";
 import { handle_input_errors } from "../midleware/handle_input_errors.js";
 

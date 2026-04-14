@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec, { swaggerUiOptions } from './config/swagger.js';
 import rootRouter from './routes/index.js';
+import { global_error_handle } from './midleware/global_error_handle.js';
 
 const server = express();
 
@@ -24,5 +25,9 @@ server.use(morgan('dev'));
 server.use('/api', rootRouter);
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions));
 server.use('/static', express.static('public'));
+
+// Middleware Normal: (req, res, next) => { ... } (Tiene 3 parámetros)
+// Expres compara por numero de parametros para saber que midleware ejecutar
+server.use(global_error_handle);
 
 export default server;

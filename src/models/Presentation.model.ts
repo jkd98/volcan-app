@@ -5,7 +5,7 @@ const categories = ['Especialidad', 'Sencillo'];
 
 
 // 1. Atributos base
-type PresentationAttributes = {
+export type PresentationAttributes = {
     presentation_id: number;
     uuid:string;
     user_id: number; // <--- El dueño del registro
@@ -17,7 +17,7 @@ type PresentationAttributes = {
 };
 
 // 2. Atributos para creación (lo que es opcional al hacer .create())
-type PresentationCreationAttributes = Optional<PresentationAttributes, 'presentation_id' | 'uuid' >;
+export type PresentationCreationAttributes = Optional<PresentationAttributes, 'presentation_id' | 'uuid' >;
 
 export class Presentation extends Model<PresentationAttributes, PresentationCreationAttributes> {
     // IMPORTANTE: Declarar las propiedades para poder usarlas en tu código
@@ -56,7 +56,9 @@ Presentation.init(
             references: {
                 model: 'users',
                 key: 'user_id'
-            }
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE' //Si borro al usuario se borran sus presentaciones
         },
         name: {
             type: DataTypes.STRING,
