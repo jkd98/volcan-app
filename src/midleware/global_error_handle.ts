@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from "express";
 import { AppError } from "../errors/AppError.js";
-import { ApiResponse } from "../types/api_response.js";
+import { IApiResponse } from "../interfaces/IIApiResponse.js";
 
 export const global_error_handle = (error: any, req: Request, res: Response, next: NextFunction) => {
     let statusCode = 500;
@@ -14,7 +14,7 @@ export const global_error_handle = (error: any, req: Request, res: Response, nex
         console.log(error); // para debuguear
     }
 
-    const errorResponse: ApiResponse<null> = {
+    const errorResponse: IApiResponse<null> = {
         success: false,
         message: msg
     }

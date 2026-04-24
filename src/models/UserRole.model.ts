@@ -10,7 +10,7 @@ export type UserRoleAttributes = {
     role_id: RoleAttributes['role_id'];
 }
 
-export type UserRoleCreationAttributes = Optional<UserRoleAttributes, 'id' | 'user_id'>;
+export type UserRoleCreationAttributes = Optional<UserRoleAttributes, 'id' | 'uuid'>;
 
 export class UserRole extends Model<UserRoleAttributes, UserRoleCreationAttributes> {
     declare id: CreationOptional<number>;

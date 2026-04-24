@@ -1,4 +1,4 @@
-export interface ApiResponse<T> {
+export interface IApiResponse<T> {
     success: boolean;
     message: string;
     data?: T;       // Aquí va el resultado (User, Presentation, etc.)

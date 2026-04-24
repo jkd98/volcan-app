@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express"
 import { PresentationService } from "../services/Presentation.Service.js"
-import { ApiResponse } from "../types/api_response.js"
+import { IApiResponse } from "../interfaces/IIApiResponse.js"
 import { Presentation } from "../models/Presentation.model.js"
 import { AppError } from "../errors/AppError.js"
 
 export const createPresentation = async (req: Request, res: Response, next:NextFunction ) => {
-    let response: ApiResponse<Presentation> = {
+    let response: IApiResponse<Presentation> = {
         success: true,
         message: "Presentación registrada",
     }
